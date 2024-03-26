@@ -1,8 +1,8 @@
 import IGHeader from "@/components/IGHeader";
 import IGContainer from "@/components/IGContainer";
-import IGStory from "@/components/IGStory";
+import IGStory from "@/pages/components/IGStory";
 import IGPost from "@/pages/components/IGPost";
-import IGProfile from "@/components/IGProfile";
+import IGProfile from "@/pages/components/IGProfile";
 import Loading from "@/components/Loading";
 import { useGetIGPostsQuery } from "@/services/homeServices";
 

@@ -50,7 +50,7 @@ const IGHeader: React.FC = () => {
             />
           </svg>
           <div className="h-6 w-6 rounded-full bg-gray-900 text-white font-bold flex justify-center items-center">
-            header
+            S
           </div>
         </div>
       </div>
