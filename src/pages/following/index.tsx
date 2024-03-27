@@ -1,8 +1,8 @@
-import IGHeader from '@/components/IGHeader';
+import IGHeader from "@/components/IGHeader";
 import IGContainer from "@/components/IGContainer";
 import IGUser from "@/components/IGUser";
 
-const friends= [
+const friends = [
   {
     id: 1,
     location: "Singapore",
@@ -75,11 +75,12 @@ const friends= [
   },
 ];
 const Following: React.FC = () => {
-  return <>
-    <IGHeader></IGHeader>
-    <IGContainer>
-      <p className="my-8 font-bold text-2xl px-4 box-border">Following</p>
-      <div className="shadow-md mt-8 mx-2 box-border">
+  return (
+    <>
+      <IGHeader></IGHeader>
+      <IGContainer>
+        <p className="my-8 font-bold text-2xl px-4 box-border">Following</p>
+        <div className="shadow-md mt-8 mx-2 box-border">
           {friends.map((item) => {
             const { id, account, avatar, isFollowing, location } = item;
             return (
@@ -95,8 +96,9 @@ const Following: React.FC = () => {
             );
           })}
         </div>
-    </IGContainer>
-  </>
+      </IGContainer>
+    </>
+  );
 };
 
 export default Following;

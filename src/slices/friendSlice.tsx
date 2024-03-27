@@ -1,11 +1,19 @@
-import IGUser from "@/components/IGUser";
-// import { useAppSelector } from "../../../../hooks";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const IGProfile: React.FC = () => {
-  // const friendReducer = useAppSelector((state) => state.friendReducer);
-  // const friends = friendReducer.friends.slice(0, 4);
+type Friend = {
+  id: number;
+  location: string;
+  account: string;
+  isFollowing: boolean;
+  avatar: string;
+};
 
-  const friends = [
+type friendState = {
+  friends: Friend[];
+};
+
+const initialState: friendState = {
+  friends: [
     {
       id: 1,
       location: "Singapore",
@@ -76,34 +84,35 @@ const IGProfile: React.FC = () => {
       isFollowing: true,
       avatar: "/images/avatars/a10.png",
     },
-  ];
-  return (
-    <div className="mt-8 ml-8 shadow-lg box-border p-2">
-      <IGUser
-        account="bruce_fe"
-        location="布魯斯前端"
-        avatar="/images/avatar.png"
-        size="medium"
-      />
-      <p className="font-bold text-gray-400 mt-4 mx-4 mb-3 text-sm">
-        You are following
-      </p>
-      {friends.map((item) => {
-        const { id, account, avatar, isFollowing, location } = item;
-        return (
-          <div className="-mt-3" key={id}>
-            <IGUser
-              account={account}
-              avatar={avatar}
-              location={location}
-              isFollowing={isFollowing}
-              showFollow
-            />
-          </div>
-        );
-      })}
-    </div>
-  );
+  ],
 };
 
-export default IGProfile;
+export const friendSlice = createSlice({
+  name: "friendsList",
+  initialState,
+  reducers: {
+    follow: (state, action: PayloadAction<number>) => {
+      const friends = state.friends;
+      for (let i = 0; i < friends.length; i++) {
+        const friend = friends[i];
+        if (friend.id === action.payload) {
+          friend.isFollowing = true;
+        }
+      }
+    },
+    unFollow: (state, action: PayloadAction<number>) => {
+      const friends = state.friends;
+      for (let i = 0; i < friends.length; i++) {
+        const friend = friends[i];
+        if (friend.id === action.payload) {
+          friend.isFollowing = false;
+        }
+      }
+    },
+  },
+});
+
+// Action creators are generated for each case reducer function
+export const { follow, unFollow } = friendSlice.actions;
+
+export default friendSlice.reducer;
