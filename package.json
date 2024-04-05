@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.2",
-    "axios": "^1.6.8",
     "clsx": "^2.1.0",
     "cross-env": "^7.0.3",
     "json-server": "^1.0.0-alpha.23",

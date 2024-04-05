@@ -18,9 +18,13 @@ type IGStory = {
   avatar: string;
 };
 
+function App() {
+  return "";
+}
+
 export const homeApi = createApi({
   reducerPath: "homeApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3400/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3004/" }),
   endpoints: (builder) => ({
     getIGPosts: builder.query<IGPost[], number | "all">({
       query: (id) => {

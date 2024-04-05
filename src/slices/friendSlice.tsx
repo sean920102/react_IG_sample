@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type Friend = {
+export type Friend = {
   id: number;
   location: string;
   account: string;

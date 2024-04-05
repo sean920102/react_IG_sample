@@ -7,7 +7,6 @@ import Loading from "@/components/Loading";
 import { useGetIGPostsQuery } from "@/services/homeServices";
 
 const IGPostList: React.FC = () => {
-  const num: number = 1;
   const { data, isLoading } = useGetIGPostsQuery("all");
   return (
     <>
@@ -59,7 +58,6 @@ const Home: React.FC = () => {
           </div>
           <div className="hidden lg:block lg:w-[424px]">
             <IGProfile />
-            {/* <IGUser avatar="/images/avatars/a9.png" account="安安你好" location='test' size='medium' showFollow={true} isFollowing={false}/> */}
           </div>
         </div>
       </IGContainer>

@@ -1,3 +1,7 @@
+import { useAppDispatch} from "@/hook"; 
+import { follow, unFollow } from "../slices/friendSlice";
+import { memo } from "react";
+
 type IGUserProps = {
   size?: "medium" | "small";
   showFollow?: boolean;
@@ -5,10 +9,13 @@ type IGUserProps = {
   account?: string;
   location?: string;
   avatar?: string;
-  id?: string;
+  id?: number;
 };
 
-const IGUser: React.FC<IGUserProps> = ({
+
+
+const IGUser: React.FC<IGUserProps> = memo(
+  ({
   size = "small",
   showFollow = false,
   isFollowing = false,
@@ -17,6 +24,17 @@ const IGUser: React.FC<IGUserProps> = ({
   avatar,
   id,
 }) => {
+  const dispatch = useAppDispatch();
+
+  function followClickHandler() {
+    console.log('click!',id)
+    if (id === undefined) return;
+    if (isFollowing) {
+      dispatch(unFollow(id));
+    } else {
+      dispatch(follow(id));
+    }
+  }
   return (
     <div className="flex h-[70px] items-center box-border px-4">
       <div
@@ -38,12 +56,13 @@ const IGUser: React.FC<IGUserProps> = ({
           className={`${
             isFollowing ? "text-gray-700" : "text-blue-400"
           } ml-auto text-xs font-bold cursor-pointer`}
+          onClick={followClickHandler}
         >
           {isFollowing ? "FOLLOWING" : "FOLLOW"}
         </p>
       )}
     </div>
   );
-};
+});
 
 export default IGUser;
